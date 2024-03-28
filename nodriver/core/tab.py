@@ -1203,7 +1203,7 @@ class Tab(Connection):
             path = pathlib.Path(filename)
         path.parent.mkdir(parents=True, exist_ok=True)
         data = await self.send(
-            cdp.page.capture_screenshot(format_=format, capture_beyond_viewport=True)
+            cdp.page.capture_screenshot(format_=format, capture_beyond_viewport=True,from_surface=full_page)
         )
         if not data:
             raise ProtocolException("could not take screenshot. most possible cause is the page has not finished loading yet.")
